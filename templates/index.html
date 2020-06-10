@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  
+  <style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+
+.s{
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  background-color: #45a049;
+
+}
+
+
+.container {
+  border-radius: 5px;
+  background-color: #ccccff;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+</style>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+ <div class="container">
+	<h1>Predict Salary Analysis</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <div class="col-25">
+      <label for="fname">Employee's Experience</label>
+    </div>
+    	<input type="text" name="experience" placeholder="Enter Employee's Experience" required="required" />
+      <br>
+    <div class="col-25">
+      <label for="lname">Employee's Test Score</label>
+    </div>
+      <input type="text" name="test_score" placeholder="Enter Employee's Test Score" required="required" />
+      <br>
+    <div class="col-25">
+      <label for="lname">Employee's Interview Score</label>
+    </div>
+		<input type="text" name="interview_score" placeholder="Enter Employee's Interview Score" required="required" /><br><br><br>
+    <div class="row">
+        <button type="submit" class="s">Predict</button>
+    </div>
+    </form>
+
+   <br>
+   <br>
+   <h3>{{ prediction_text }}</h3>
+
+ </div>
+
+
+</body>
+</html>
